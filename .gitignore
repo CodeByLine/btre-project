@@ -11,20 +11,17 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 /media
-git_notes.txt
 /static
 /notes
 ### personal files ###
-
+git_notes.txt
 notes_*.*
 .DS_Store
 .vscode/
 
 settings_copy.py 
 
-
-
-venv
+/venv
 
 *.py[cod]
 *$py.class
