@@ -1,5 +1,6 @@
 {% load static %}
-{% if messages %}
+{% if messages %}  
+<!-- fadeout configured in main.js -->
     {% for message in messages %}
     <div id="message" class="container">
         <div class="alert alert-{{ message.tags }} alert-dismiisble text-center" role="alert"> 
