@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 # from contacts.models import Contact
@@ -60,7 +61,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            message.success(request, 'You are now logged in')
+            messages.success(request, 'You are now logged in')
             return redirect('dashboard')
         else:
             messages.error(request, 'Invalid credentials')
@@ -68,7 +69,12 @@ def login(request):
     return render(request, 'accounts/login.html')    
 
 def logout(request):
-    return render(request, 'accounts/logout.html')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are logged out')
+    return redirect ('index')
 
+# @login_required
+@login_required(login_url='login')
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
